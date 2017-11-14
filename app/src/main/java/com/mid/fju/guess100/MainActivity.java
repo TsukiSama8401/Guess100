@@ -15,7 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView secret;
     private TextView info;
     private Button send;
-
+    Random random = new Random();
+    int r = random.nextInt(99)+1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +31,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void guess(View view){
-        Random random = new Random();
-        int r = random.nextInt(99)+1;
-        
+        String s = String.valueOf(r);
+        secret.setText(s);
     }
 
 }
