@@ -29,12 +29,10 @@ public class MainActivity extends AppCompatActivity {
         send = (Button) findViewById(R.id.send);
     }
 
-
-
     public void guess(View view){
         Random random = new Random();
         int r = random.nextInt(99)+1;
-
+        
     }
 
 }
