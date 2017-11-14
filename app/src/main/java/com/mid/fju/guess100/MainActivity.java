@@ -1,5 +1,6 @@
 package com.mid.fju.guess100;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
     public void guess(View view){
         String s = String.valueOf(r);
         secret.setText(s);
+
+        String n = number.getText().toString();
+        int i = Integer.parseInt(n);
+
+        if (i > r){
+            new AlertDialog.Builder(this)
+                    .setMessage("0 to " + i)
+                    .setPositiveButton("ok",null)
+                    .show();
+        }
     }
 
 }
