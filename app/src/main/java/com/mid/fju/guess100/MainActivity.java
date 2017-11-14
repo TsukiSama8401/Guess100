@@ -7,7 +7,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
+
+    private EditText number;
+    private TextView secret;
+    private TextView info;
+    private Button send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,12 +22,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViews();
     }
+    private void findViews(){
+        number = (EditText) findViewById(R.id.number);
+        secret = (TextView) findViewById(R.id.secret);
+        info = (TextView) findViewById(R.id.info);
+        send = (Button) findViewById(R.id.send);
+    }
 
-    private void findViews() {
-        EditText number = (EditText) findViewById(R.id.number);
-        TextView secret = (TextView) findViewById(R.id.secret);
-        TextView info = (TextView) findViewById(R.id.info);
-        Button send = (Button) findViewById(R.id.send);
+
+
+    public void guess(View view){
+        Random random = new Random();
+        int r = random.nextInt(99)+1;
+
     }
 
 }
