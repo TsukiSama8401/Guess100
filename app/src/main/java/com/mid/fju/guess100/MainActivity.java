@@ -1,5 +1,6 @@
 package com.mid.fju.guess100;
 
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,29 +37,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void guess(View view){
-
-
         String n = number.getText().toString();
         int i = Integer.parseInt(n);
 
-        if (i > r){
-            max = i;
+        if(i > max || i < min){
             new AlertDialog.Builder(this)
-                    .setMessage(min + " to " + max)
-                    .setPositiveButton("ok",null)
-                    .show();
-        }else if (i < r){
-            min = i;
-            new AlertDialog.Builder(this)
-                    .setMessage(min + "to " + max)
+                    .setMessage("Are you kidding me")
                     .setPositiveButton("ok" , null)
                     .show();
-        }else if (i == r){
-            new AlertDialog.Builder(this)
-                    .setMessage("BINGO")
-                    .setPositiveButton("ok" , null)
-                    .show();
+        }else{
+            if (i > r){
+                max = i;
+                new AlertDialog.Builder(this)
+                        .setMessage(min + " to " + max)
+                        .setPositiveButton("ok",null)
+                        .show();
+            }else if (i < r){
+                min = i;
+                new AlertDialog.Builder(this)
+                        .setMessage(min + "to " + max)
+                        .setPositiveButton("ok" , null)
+                        .show();
+            }else if (i == r){
+                new AlertDialog.Builder(this)
+                        .setMessage("BINGO")
+                        .setPositiveButton("ok" , null)
+                        .show();
+                Intent intent = new Intent(this , AgainActivity.class);
+                startActivity(intent);
+            }
         }
+
     }
 
 }
