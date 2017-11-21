@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private Button send;
     Random random = new Random();
     int r = random.nextInt(99)+1;
+    int min = 0;
+    int max = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,19 +31,32 @@ public class MainActivity extends AppCompatActivity {
         secret = (TextView) findViewById(R.id.secret);
         info = (TextView) findViewById(R.id.info);
         send = (Button) findViewById(R.id.send);
+        String s = String.valueOf(r);
+        secret.setText(s);
     }
 
     public void guess(View view){
-        String s = String.valueOf(r);
-        secret.setText(s);
+
 
         String n = number.getText().toString();
         int i = Integer.parseInt(n);
 
         if (i > r){
+            max = i;
             new AlertDialog.Builder(this)
-                    .setMessage("0 to " + i)
+                    .setMessage(min + " to " + max)
                     .setPositiveButton("ok",null)
+                    .show();
+        }else if (i < r){
+            min = i;
+            new AlertDialog.Builder(this)
+                    .setMessage(min + "to " + max)
+                    .setPositiveButton("ok" , null)
+                    .show();
+        }else if (i == r){
+            new AlertDialog.Builder(this)
+                    .setMessage("BINGO")
+                    .setPositiveButton("ok" , null)
                     .show();
         }
     }
